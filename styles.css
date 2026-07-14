@@ -537,7 +537,7 @@ section { padding: clamp(72px, 9vw, 130px) 0; }
   border-radius: calc(var(--radius) + 8px);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1fr 0.92fr;
   align-items: end;
 }
 .portrait-copy { padding: clamp(36px, 5vw, 72px); align-self: center; }
@@ -546,12 +546,12 @@ section { padding: clamp(72px, 9vw, 130px) 0; }
 .portrait-img-wrap {
   position: relative;
   align-self: end;
-  padding: clamp(20px, 3vw, 40px) clamp(20px, 3vw, 40px) 0;
+  padding: clamp(16px, 2vw, 28px) clamp(8px, 1.5vw, 20px) 0;
 }
 .portrait-img-wrap img {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 480px;
   margin: 0 auto;
   border-radius: 14px 14px 0 0;
 }
