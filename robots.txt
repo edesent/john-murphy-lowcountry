@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johnmurphylowcountry.com/sitemap.xml
+Sitemap: https://www.thereserveteamsc.com/sitemap.xml

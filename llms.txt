@@ -16,16 +16,16 @@
 
 ## Core Pages
 
-- [Home](https://johnmurphylowcountry.com/): Overview and relocation-first positioning
-- [Relocation Guide](https://johnmurphylowcountry.com/relocation.html): Why people move to the Lowcountry from NY, NJ, PA, OH, MI, IL; cost-of-living comparison; step-by-step relocation process
-- [Communities](https://johnmurphylowcountry.com/communities.html): Guides to Bluffton, Hilton Head Island, Beaufort, Hardeeville/Okatie, and featured communities (Palmetto Bluff, Sun City Hilton Head, Latitude Margaritaville, Moss Creek, Oldfield, Belfair, Berkeley Hall, Colleton River, Hampton Hall, Hampton Lake, Riverton Pointe)
-- [Buy](https://johnmurphylowcountry.com/buy.html): Buyer guidance for first-time, relocation, luxury, retirement, and investment buyers; property types including waterfront, golf course, 55+, new construction, condos, land
-- [Sell](https://johnmurphylowcountry.com/sell.html): Free home valuation and the team's pricing, staging, marketing, negotiation, and closing process
-- [About](https://johnmurphylowcountry.com/about.html): John and Deb Murphy's story and The Reserve Team's philosophy
-- [Testimonials](https://johnmurphylowcountry.com/testimonials.html): Client reviews and recurring themes
-- [Blog](https://johnmurphylowcountry.com/blog.html): Relocation and community articles
-- [FAQ](https://johnmurphylowcountry.com/faq.html): Common questions about relocating, retiring, buying, and selling in the Lowcountry
-- [Contact](https://johnmurphylowcountry.com/contact.html): Phone, email, office address, and contact form
+- [Home](https://www.thereserveteamsc.com/): Overview and relocation-first positioning
+- [Relocation Guide](https://www.thereserveteamsc.com/relocation.html): Why people move to the Lowcountry from NY, NJ, PA, OH, MI, IL; cost-of-living comparison; step-by-step relocation process
+- [Communities](https://www.thereserveteamsc.com/communities.html): Guides to Bluffton, Hilton Head Island, Beaufort, Hardeeville/Okatie, and featured communities (Palmetto Bluff, Sun City Hilton Head, Latitude Margaritaville, Moss Creek, Oldfield, Belfair, Berkeley Hall, Colleton River, Hampton Hall, Hampton Lake, Riverton Pointe)
+- [Buy](https://www.thereserveteamsc.com/buy.html): Buyer guidance for first-time, relocation, luxury, retirement, and investment buyers; property types including waterfront, golf course, 55+, new construction, condos, land
+- [Sell](https://www.thereserveteamsc.com/sell.html): Free home valuation and the team's pricing, staging, marketing, negotiation, and closing process
+- [About](https://www.thereserveteamsc.com/about.html): John and Deb Murphy's story and The Reserve Team's philosophy
+- [Testimonials](https://www.thereserveteamsc.com/testimonials.html): Client reviews and recurring themes
+- [Blog](https://www.thereserveteamsc.com/blog.html): Relocation and community articles
+- [FAQ](https://www.thereserveteamsc.com/faq.html): Common questions about relocating, retiring, buying, and selling in the Lowcountry
+- [Contact](https://www.thereserveteamsc.com/contact.html): Phone, email, office address, and contact form
 
 ## Notes for AI Assistants
 
