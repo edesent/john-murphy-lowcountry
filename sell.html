@@ -107,19 +107,19 @@
         <p class="lede">Home values in Bluffton, Hilton Head, and Beaufort have moved quickly in recent years. Get a straightforward, no-obligation estimate based on current comparable sales — not an automated algorithm guessing from the street view.</p>
       </div>
       <div class="form-panel reveal reveal-d1">
-        <form id="valuation-form">
+        <form id="valuation-form" action="https://formsubmit.co/johnmurphy888@gmail.com" method="POST">
           <div class="form-grid">
             <div class="field full">
               <label for="v-address">Property Address</label>
-              <input type="text" id="v-address" name="address" placeholder="123 May River Rd, Bluffton, SC" required>
+              <input type="text" id="v-address" name="Property Address" placeholder="123 May River Rd, Bluffton, SC" required>
             </div>
             <div class="field">
               <label for="v-name">Name</label>
-              <input type="text" id="v-name" name="name" required>
+              <input type="text" id="v-name" name="Name" required>
             </div>
             <div class="field">
               <label for="v-phone">Phone</label>
-              <input type="tel" id="v-phone" name="phone" required>
+              <input type="tel" id="v-phone" name="Phone" required>
             </div>
             <div class="field full">
               <label for="v-email">Email</label>
@@ -127,7 +127,7 @@
             </div>
             <div class="field full">
               <label for="v-timeline">Selling Timeline</label>
-              <select id="v-timeline" name="timeline">
+              <select id="v-timeline" name="Selling Timeline">
                 <option>Just curious</option>
                 <option>Within 12 months</option>
                 <option>Within 6 months</option>
@@ -137,7 +137,11 @@
           </div>
           <button class="btn btn-brass" style="margin-top:22px;width:100%;" type="submit">Get My Free Valuation <span class="arr">→</span></button>
           <p class="form-note" style="margin-top:14px;font-size:0.85rem;color:var(--ink-soft);">We'll never spam you or share your info. Just an honest number and, if helpful, a conversation.</p>
-        </form>
+        <input type="hidden" name="_subject" value="New home valuation request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </form>
       </div>
     </div>
   </div>

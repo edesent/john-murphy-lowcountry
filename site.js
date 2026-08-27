@@ -117,42 +117,72 @@
     targets.forEach(function (t) { subObs.observe(t); });
   }
 
-  // Contact / valuation form (demo): open a pre-filled email
-  var form = document.querySelector('#contact-form');
-  if (form) {
+  // ---- Lead forms -------------------------------------------------------
+  // Submissions POST to the FormSubmit relay so a lead lands in John's inbox
+  // even when the visitor has no mail client configured. If the relay ever
+  // refuses, we fall back to the old prefilled-email behaviour rather than
+  // silently losing the lead.
+  var RELAY = 'https://formsubmit.co/ajax/johnmurphy888@gmail.com';
+
+  function fallbackMailto(d, subject, rows) {
+    var body = rows.map(function (r) { return r[0] + ': ' + (d.get(r[1]) || ''); }).join('\n');
+    return 'mailto:johnmurphy888@gmail.com?subject=' + encodeURIComponent(subject) +
+           '&body=' + encodeURIComponent(body);
+  }
+
+  function wireLeadForm(selector, subjectFor, rows, msg) {
+    var form = document.querySelector(selector);
+    if (!form) return;
+    var note = form.querySelector('.form-note');
+    var btn = form.querySelector('button[type="submit"]');
+    var original = note ? note.textContent : '';
+
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
+
+      var honey = form.querySelector('input[name="_honey"]');
+      if (honey && honey.value) return; // bot filled the hidden field
+
       var d = new FormData(form);
-      var subject = encodeURIComponent('Website inquiry — ' + (d.get('goal') || 'General'));
-      var body = encodeURIComponent(
-        'Name: ' + d.get('name') + '\n' +
-        'Phone: ' + d.get('phone') + '\n' +
-        'Email: ' + d.get('email') + '\n' +
-        'I want to: ' + d.get('goal') + '\n\n' +
-        d.get('message')
-      );
-      window.location.href = 'mailto:johnmurphy888@gmail.com?subject=' + subject + '&body=' + body;
-      var note = form.querySelector('.form-note');
-      if (note) note.textContent = 'Opening your email app… or just call/text John at (518) 496-0703.';
+      var subject = subjectFor(d);
+      d.set('_subject', subject);
+
+      if (note) note.textContent = msg.sending;
+      if (btn) btn.disabled = true;
+
+      fetch(RELAY, { method: 'POST', headers: { 'Accept': 'application/json' }, body: d })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (j) {
+          // FormSubmit answers HTTP 200 with success:"false" when it refuses,
+          // so the JSON payload decides -- not response.ok.
+          if (String(j.success) !== 'true') throw new Error('relay declined');
+          form.reset();
+          if (btn) btn.disabled = false;
+          if (note) note.textContent = msg.ok;
+        })
+        .catch(function () {
+          if (btn) btn.disabled = false;
+          if (note) note.textContent = msg.fail;
+          window.location.href = fallbackMailto(d, subject, rows);
+          setTimeout(function () { if (note) note.textContent = original; }, 8000);
+        });
     });
   }
 
-  var valForm = document.querySelector('#valuation-form');
-  if (valForm) {
-    valForm.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var d = new FormData(valForm);
-      var subject = encodeURIComponent('Home Valuation Request — ' + (d.get('address') || ''));
-      var body = encodeURIComponent(
-        'Name: ' + d.get('name') + '\n' +
-        'Phone: ' + d.get('phone') + '\n' +
-        'Email: ' + d.get('email') + '\n' +
-        'Property Address: ' + d.get('address') + '\n' +
-        'Timeline: ' + d.get('timeline')
-      );
-      window.location.href = 'mailto:johnmurphy888@gmail.com?subject=' + subject + '&body=' + body;
-      var note = valForm.querySelector('.form-note');
-      if (note) note.textContent = 'Opening your email app… John will follow up with your free valuation shortly.';
-    });
-  }
+  wireLeadForm('#contact-form',
+    function (d) { return 'Website inquiry — ' + (d.get('I want to') || 'General'); },
+    [['Name', 'Name'], ['Phone', 'Phone'], ['Email', 'email'],
+     ['I want to', 'I want to'], ['Message', 'Message']],
+    { sending: 'Sending…',
+      ok: 'Thank you — your message is on its way. John responds personally, usually the same day.',
+      fail: 'Opening your email app instead… or call/text John at (518) 496-0703.' });
+
+  wireLeadForm('#valuation-form',
+    function (d) { return 'Home valuation request — ' + (d.get('Property Address') || ''); },
+    [['Name', 'Name'], ['Phone', 'Phone'], ['Email', 'email'],
+     ['Property Address', 'Property Address'], ['Selling Timeline', 'Selling Timeline']],
+    { sending: 'Sending…',
+      ok: 'Thank you — request received. John will follow up with your free valuation shortly.',
+      fail: 'Opening your email app instead… or call/text John at (518) 496-0703.' });
+
 })();

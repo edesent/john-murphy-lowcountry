@@ -134,15 +134,15 @@
     <div class="form-panel reveal">
       <span class="eyebrow">Send a Message</span>
       <h2 class="d3" style="margin-bottom:20px;">Tell us about your move.</h2>
-      <form id="contact-form">
+      <form id="contact-form" action="https://formsubmit.co/johnmurphy888@gmail.com" method="POST">
         <div class="form-grid">
           <div class="field">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="Name" required>
           </div>
           <div class="field">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="Phone" required>
           </div>
           <div class="field full">
             <label for="email">Email</label>
@@ -150,7 +150,7 @@
           </div>
           <div class="field full">
             <label for="goal">I want to</label>
-            <select id="goal" name="goal">
+            <select id="goal" name="I want to">
               <option>Explore relocating to the Lowcountry</option>
               <option>Buy a home</option>
               <option>Sell a home</option>
@@ -160,11 +160,15 @@
           </div>
           <div class="field full">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us a bit about your timeline and what you're looking for..."></textarea>
+            <textarea id="message" name="Message" placeholder="Tell us a bit about your timeline and what you're looking for..."></textarea>
           </div>
         </div>
         <button class="btn btn-brass" style="margin-top:22px;width:100%;" type="submit">Send Message <span class="arr">→</span></button>
         <p class="form-note" style="margin-top:14px;font-size:0.85rem;color:var(--ink-soft);">We respond personally — usually the same day.</p>
+        <input type="hidden" name="_subject" value="New website inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       </form>
     </div>
     <div class="reveal reveal-d1">

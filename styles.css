@@ -1118,3 +1118,13 @@ details .check {
   .brand-name { font-size: 1rem; }
   .compare-table { font-size: 0.85rem; }
 }
+
+/* Honeypot field — hidden from people, visible to bots that fill everything */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
