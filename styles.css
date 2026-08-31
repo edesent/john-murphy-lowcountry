@@ -177,7 +177,7 @@ h1, h2, h3, .serif {
   gap: 24px;
 }
 .brand { display: flex; align-items: center; gap: 13px; }
-.brand img { height: 44px; width: auto; border-radius: 50%; }
+.brand img { height: 46px; width: auto; }
 .brand-text { line-height: 1.15; }
 .brand-name {
   font-family: var(--serif);
@@ -1001,7 +1001,7 @@ details .check {
   padding-bottom: 48px;
   border-bottom: 1px solid var(--line-light);
 }
-.footer-brand img { height: 60px; margin-bottom: 20px; border-radius: 50%; }
+.footer-brand img { height: 68px; width: auto; margin-bottom: 20px; }
 .footer-brand p { font-size: 0.92rem; max-width: 34ch; }
 .footer-col h4 {
   color: #fff;
@@ -1114,7 +1114,7 @@ details .check {
   .nav-btn { display: none; }
   .hero-badges { gap: 14px; }
   .footer-grid { grid-template-columns: 1fr; }
-  .brand img { height: 38px; }
+  .brand img { height: 40px; }
   .brand-name { font-size: 1rem; }
   .compare-table { font-size: 0.85rem; }
   /* Beat inline grid overrides on small screens so cards stack instead of squeezing */
