@@ -1117,6 +1117,8 @@ details .check {
   .brand img { height: 38px; }
   .brand-name { font-size: 1rem; }
   .compare-table { font-size: 0.85rem; }
+  /* Beat inline grid overrides on small screens so cards stack instead of squeezing */
+  .comm-grid, .type-grid { grid-template-columns: 1fr !important; }
 }
 
 /* Honeypot field — hidden from people, visible to bots that fill everything */
@@ -1128,3 +1130,9 @@ details .check {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+/* Cards that are links: keep the card look, gain the affordance */
+a.type-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+a.type-card:hover h3 { color: var(--brass); }
+a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
