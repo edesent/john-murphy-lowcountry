@@ -1385,3 +1385,13 @@ a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px
   color: var(--brass); letter-spacing: 0.02em;
 }
 .listing-card:hover .listing-card-cta { color: var(--green); }
+
+/* Price chip — the single most important number on a listing block */
+.price-chip {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 9px 20px;
+}
