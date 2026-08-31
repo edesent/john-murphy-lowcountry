@@ -1136,3 +1136,252 @@ details .check {
 a.type-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
 a.type-card:hover h3 { color: var(--brass); }
 a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+/* ============================================================
+   Listing detail pages
+   ============================================================ */
+.listing-hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--green);
+}
+.listing-hero .hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.listing-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(18,33,30,0.52), rgba(15,26,22,0.22) 40%, rgba(15,26,22,0.92));
+}
+.listing-hero .hero-content {
+  position: relative; z-index: 2;
+  text-align: left;
+  padding: 150px clamp(20px, 4vw, 48px) 60px;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  color: #fff;
+}
+.listing-hero .d1 { color: #fff; margin: 6px 0 2px; }
+
+.crumb-back {
+  display: inline-block;
+  color: var(--white-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 22px;
+  transition: color 0.25s;
+}
+.crumb-back:hover { color: var(--brass-bright); }
+
+.listing-status {
+  display: inline-block;
+  background: var(--brass);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 13px;
+  border-radius: 999px;
+}
+.listing-sub {
+  color: var(--white-soft);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.listing-price {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 600;
+  color: var(--brass-bright);
+  line-height: 1;
+  margin-bottom: 22px;
+}
+.listing-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  margin-bottom: 32px;
+  color: var(--white-soft);
+  font-size: 0.92rem;
+}
+.listing-facts strong { color: #fff; font-weight: 650; }
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.gal-item {
+  padding: 0; border: 0; background: none; cursor: pointer;
+  border-radius: 14px; overflow: hidden;
+  line-height: 0;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.gal-item img { width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+.gal-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.gal-item:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+/* Spec table */
+.spec-list { margin-top: 8px; }
+.spec-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 34%) 1fr;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.spec-row dt { font-weight: 650; color: var(--ink); font-size: 0.88rem; }
+.spec-row dd { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+.listing-disclaimer {
+  margin-top: 30px;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+.cta-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+/* Lightbox */
+.lightbox[hidden] { display: none; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(12, 20, 17, 0.94);
+  display: flex; align-items: center; justify-content: center;
+  padding: 4vh 5vw;
+}
+.lightbox .lb-img {
+  max-width: 100%; max-height: 84vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+}
+.lightbox button {
+  position: absolute;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--line-light);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.25s;
+}
+.lightbox button:hover { background: rgba(255,255,255,0.22); }
+.lb-close { top: 22px; right: 22px; width: 44px; height: 44px; font-size: 1.5rem; line-height: 1; }
+.lb-prev, .lb-next { top: 50%; transform: translateY(-50%); width: 52px; height: 52px; font-size: 2rem; line-height: 1; }
+.lb-prev { left: 18px; }
+.lb-next { right: 18px; }
+.lb-caption {
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+  color: var(--white-soft); font-size: 0.85rem; text-align: center;
+  max-width: 80ch; padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .listing-hero { min-height: 70vh; }
+  .listing-hero .hero-content { padding-top: 120px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .spec-row { grid-template-columns: 1fr; gap: 4px; }
+  .listing-facts { gap: 10px 20px; font-size: 0.86rem; }
+  .lb-prev, .lb-next { width: 42px; height: 42px; font-size: 1.5rem; }
+  .lb-prev { left: 8px; } .lb-next { right: 8px; }
+}
+
+/* Listing payment estimator + per-listing inquiry form */
+.calc-card {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 34px);
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+.calc-grid label {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 0.78rem; font-weight: 650;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.calc-grid input {
+  font-family: var(--sans); font-size: 1rem;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff; color: var(--ink);
+}
+.calc-grid input:focus-visible { outline: 2px solid var(--brass); outline-offset: 1px; }
+.calc-out {
+  margin-top: 24px; padding: 20px 22px;
+  background: var(--green); color: #fff;
+  border-radius: 14px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.calc-label { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-soft); }
+.calc-value { font-family: var(--serif); font-size: clamp(1.9rem, 3.4vw, 2.5rem); font-weight: 600; color: var(--brass-bright); line-height: 1.1; }
+.calc-sub { font-size: 0.82rem; color: var(--white-soft); }
+.calc-note { margin-top: 16px; font-size: 0.76rem; line-height: 1.6; color: var(--ink-soft); opacity: 0.9; }
+
+.listing-form { margin-top: 22px; }
+@media (max-width: 680px) { .calc-grid { grid-template-columns: 1fr; } }
+
+/* Listing index cards — scales to any number of featured listings */
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+}
+.listing-card {
+  display: flex; flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.listing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.listing-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+.listing-card-media { position: relative; line-height: 0; }
+.listing-card-media img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+.listing-card-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--brass); color: #fff;
+  font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 999px;
+}
+.listing-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.listing-card-price { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--green); line-height: 1.1; }
+.listing-card-addr { font-weight: 650; font-size: 1rem; color: var(--ink); }
+.listing-card-sub { font-size: 0.84rem; color: var(--ink-soft); }
+.listing-card-facts {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  margin-top: 10px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem; color: var(--ink-soft);
+}
+.listing-card-facts strong { color: var(--ink); font-weight: 650; }
+.listing-card-cta {
+  margin-top: auto; padding-top: 16px;
+  font-size: 0.84rem; font-weight: 650;
+  color: var(--brass); letter-spacing: 0.02em;
+}
+.listing-card:hover .listing-card-cta { color: var(--green); }

@@ -185,4 +185,96 @@
       ok: 'Thank you — request received. John will follow up with your free valuation shortly.',
       fail: 'Opening your email app instead… or call/text John at (518) 496-0703.' });
 
+
+  // ---- Listing gallery lightbox ---------------------------------------
+  var lb = document.getElementById('lightbox');
+  var galItems = Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
+  if (lb && galItems.length) {
+    var lbImg = lb.querySelector('.lb-img');
+    var lbCap = lb.querySelector('.lb-caption');
+    var idx = 0, lastFocus = null;
+
+    function render() {
+      var el = galItems[idx];
+      lbImg.src = el.getAttribute('data-full');
+      lbImg.alt = el.getAttribute('data-alt') || '';
+      lbCap.textContent = (idx + 1) + ' of ' + galItems.length + ' — ' + (el.getAttribute('data-alt') || '');
+    }
+    function open(i) {
+      idx = i; lastFocus = document.activeElement;
+      render(); lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.lb-close').focus();
+    }
+    function close() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+    function step(d) { idx = (idx + d + galItems.length) % galItems.length; render(); }
+
+    galItems.forEach(function (el, i) {
+      el.addEventListener('click', function () { open(i); });
+    });
+    lb.querySelector('.lb-close').addEventListener('click', close);
+    lb.querySelector('.lb-prev').addEventListener('click', function () { step(-1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { step(1); });
+    lb.addEventListener('click', function (ev) { if (ev.target === lb) close(); });
+    document.addEventListener('keydown', function (ev) {
+      if (lb.hidden) return;
+      if (ev.key === 'Escape') close();
+      else if (ev.key === 'ArrowLeft') step(-1);
+      else if (ev.key === 'ArrowRight') step(1);
+    });
+  }
+
+
+  // ---- Listing payment estimator --------------------------------------
+  var calc = document.querySelector('.calc-card');
+  if (calc) {
+    var elPrice = calc.querySelector('.calc-price'),
+        elDown  = calc.querySelector('.calc-down'),
+        elRate  = calc.querySelector('.calc-rate'),
+        elTerm  = calc.querySelector('.calc-term'),
+        outVal  = calc.querySelector('.calc-value'),
+        outSub  = calc.querySelector('.calc-sub');
+
+    function money(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+    function recalc() {
+      var price = parseFloat((elPrice.value || '').replace(/[^0-9.]/g, '')) || 0;
+      var downPct = parseFloat(elDown.value) || 0;
+      var rate = parseFloat(elRate.value) || 0;
+      var years = parseInt(elTerm.value, 10) || 30;
+      var principal = price * (1 - downPct / 100);
+      var i = rate / 100 / 12;
+      var n = years * 12;
+      var pmt = i === 0 ? principal / n
+                        : principal * i / (1 - Math.pow(1 + i, -n));
+      if (!isFinite(pmt) || pmt <= 0) { outVal.textContent = '—'; outSub.textContent = ''; return; }
+      outVal.textContent = money(pmt) + ' / mo';
+      outSub.textContent = money(principal) + ' financed after a ' + money(price * downPct / 100) +
+                           ' down payment, over ' + years + ' years.';
+    }
+    [elPrice, elDown, elRate, elTerm].forEach(function (el) {
+      el.addEventListener('input', recalc);
+    });
+    elPrice.addEventListener('blur', function () {
+      var v = parseFloat((elPrice.value || '').replace(/[^0-9.]/g, ''));
+      if (v) elPrice.value = '$' + Math.round(v).toLocaleString('en-US');
+    });
+    recalc();
+  }
+
+  // Per-listing inquiry form uses the same relay + fallback as the other forms
+  wireLeadForm('#listing-form',
+    function (d) { return 'Listing inquiry — ' + (d.get('Property') || '') + ' (MLS ' + (d.get('MLS Number') || '') + ')'; },
+    [['Name', 'Name'], ['Phone', 'Phone'], ['Email', 'email'],
+     ['Property', 'Property'], ['MLS Number', 'MLS Number'],
+     ['I would like to', 'I would like to'], ['Message', 'Message']],
+    { sending: 'Sending…',
+      ok: 'Thank you — your inquiry is on its way. John or Deb will be in touch, usually the same day.',
+      fail: 'Opening your email app instead… or call/text John at (518) 496-0703.' });
+
 })();
