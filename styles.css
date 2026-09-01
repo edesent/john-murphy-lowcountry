@@ -555,8 +555,10 @@ details .check {
 }
 .portrait-img-wrap img {
   position: relative;
+  display: block;
   width: 100%;
-  max-width: 480px;
+  height: auto;              /* without this, width/height attributes pin the height and squeeze the photo */
+  max-width: 560px;
   margin: 0 auto;
   border-radius: 14px 14px 0 0;
 }
