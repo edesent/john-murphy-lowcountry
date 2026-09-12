@@ -1,1 +1,5 @@
 .vercel
+
+# Not a Next.js site. A public/ folder here hijacks the Vercel output
+# directory and 404s every page. Images go in images/.
+/public/
