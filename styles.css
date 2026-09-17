@@ -550,17 +550,18 @@ details .check {
 .portrait-copy .lede { color: var(--white-soft); margin-top: 18px; }
 .portrait-img-wrap {
   position: relative;
-  align-self: end;
-  padding: clamp(16px, 2vw, 28px) clamp(8px, 1.5vw, 20px) 0;
+  align-self: center;        /* was end: fine for a full-height portrait, leaves a void under a landscape photo */
+  padding: clamp(28px, 3vw, 48px) clamp(16px, 2vw, 32px);
 }
 .portrait-img-wrap img {
   position: relative;
   display: block;
   width: 100%;
   height: auto;              /* without this, width/height attributes pin the height and squeeze the photo */
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
-  border-radius: 14px 14px 0 0;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
 }
 
 /* ---------- Duo portraits (About page team) ---------- */
