@@ -1376,7 +1376,7 @@ a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px
   left: 50%;
   top: 17%;
   transform: translate(-50%, -50%) rotate(-7deg);
-  color: rgba(211, 173, 120, 0.72);
+  color: rgba(185, 145, 90, 0.78);
   font-family: var(--serif);
   font-size: clamp(0.9rem, 2.2vw, 1.25rem);
   font-weight: 600;
