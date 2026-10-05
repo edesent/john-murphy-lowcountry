@@ -1374,7 +1374,7 @@ a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px
 .listing-price-banner {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 28%;
   transform: translate(-50%, -50%) rotate(-7deg);
   color: rgba(255, 255, 255, 0.76);
   font-family: var(--serif);
