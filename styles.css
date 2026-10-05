@@ -1376,7 +1376,7 @@ a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px
   left: 50%;
   top: 17%;
   transform: translate(-50%, -50%) rotate(-7deg);
-  color: rgba(185, 145, 90, 0.78);
+  color: rgba(255, 255, 255, 0.86);
   font-family: var(--serif);
   font-size: clamp(0.9rem, 2.2vw, 1.25rem);
   font-weight: 600;
@@ -1385,7 +1385,7 @@ a.type-card:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px
   white-space: nowrap;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.45);
   pointer-events: none;
 }
 .listing-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
