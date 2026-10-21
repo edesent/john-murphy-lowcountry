@@ -1342,6 +1342,13 @@ details .check {
   .listings-portfolio .listing-card:nth-of-type(8) {
     grid-column: 1 / -1;
   }
+  .listings-portfolio .listing-card--signature .listing-card-media {
+    height: auto;
+  }
+  .listings-portfolio .listing-card--signature .listing-card-media img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
   .listings-portfolio .listing-card--spotlight {
     display: flex;
     min-height: 0;
