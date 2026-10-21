@@ -1289,8 +1289,12 @@ details .check {
   grid-column: span 6;
   order: -1;
 }
+.listings-portfolio .listing-card--signature .listing-card-media {
+  height: 380px;
+}
 .listings-portfolio .listing-card--signature .listing-card-media img {
-  aspect-ratio: 16 / 9;
+  height: 100%;
+  aspect-ratio: auto;
 }
 .listings-portfolio .listing-card--signature .listing-card-addr {
   font-size: 1.3rem;
