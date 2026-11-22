@@ -1299,12 +1299,6 @@ details .check {
 .listings-portfolio .listing-card--signature .listing-card-addr {
   font-size: 1.3rem;
 }
-.listings-portfolio .listing-card:nth-of-type(7) {
-  grid-column: 3 / span 4;
-}
-.listings-portfolio .listing-card:nth-of-type(8) {
-  grid-column: 7 / span 4;
-}
 
 @media (max-width: 1080px) {
   .listings-portfolio .listing-card {
